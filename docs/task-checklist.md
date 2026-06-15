@@ -13,7 +13,7 @@
 | Dashboard | Da co dashboard 6 panels va screenshot |
 | Alerts | Ca 3 rule da duoc script trigger thanh cong |
 | Blueprint report | Da dien day du local evidence va Langfuse trace evidence |
-| Git evidence | Commit `3a367b3` da co; can push len remote truoc khi nop |
+| Git evidence | Cac commit P0 va Langfuse evidence da push len `origin/main` |
 
 ## P0 - Bat buoc de dat
 
@@ -37,7 +37,7 @@
 | [x] | Inject incident va debug theo flow | `scripts/inject_incident.py`, `data/incidents.json` | `rag_slow` duoc chung minh boi metric 5659ms va RAG log 5504ms |
 | [x] | Dien day du blueprint report | `docs/blueprint-template.md` | Da dien metadata, score, SLO, incident va evidence; Langfuse evidence ghi pending |
 | [x] | Thu thap toan bo grading evidence | `docs/grading-evidence.md` | Da co log, dashboard, alerts, trace list va waterfall |
-| [x] | Tao Git evidence cho tung thanh vien | Git history, `docs/blueprint-template.md` | Thanh vien duy nhat co commit `3a367b3`; can push de remote link truy cap duoc |
+| [x] | Tao Git evidence cho tung thanh vien | Git history, `docs/blueprint-template.md` | Commit `3a367b3` va `d54ffb5` da co link GitHub truy cap duoc |
 | [x] | Rehearse live demo | README, report, dashboard, Langfuse | Da chay 10 request voi tracing live, dashboard va incident flow |
 
 ## P1 - Nen lam de tang chat luong

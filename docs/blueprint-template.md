@@ -59,7 +59,8 @@
 
 ### [MEMBER_A_NAME] Dao Xuan Bach
 - [TASKS_COMPLETED]: Correlation middleware, structured logging, recursive PII redaction, Langfuse compatibility, RAG/LLM spans, time-series metrics, six-panel dashboard, SLOs, alerts, incident automation, tests, validator, and evidence.
-- [EVIDENCE_LINK]: Commit `3a367b3` (`feat: complete observability P0 requirements`); push to origin before submission to make the remote link public.
+- [EVIDENCE_LINK]: https://github.com/bachbach6124/2A202600640-DaoXuanBach-Day13/commit/3a367b3
+- [LANGFUSE_EVIDENCE_COMMIT]: https://github.com/bachbach6124/2A202600640-DaoXuanBach-Day13/commit/d54ffb5
 
 ### [MEMBER_B_NAME] N/A
 - [TASKS_COMPLETED]: N/A
