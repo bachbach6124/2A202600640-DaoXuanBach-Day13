@@ -46,7 +46,12 @@ python scripts/inject_incident.py --scenario rag_slow
 
 # Check your implementation progress
 python scripts/validate_logs.py
+
+# Verify baseline traffic and all three incident alerts
+python scripts/verify_p0.py
 ```
+
+Open `http://127.0.0.1:8000/dashboard` for the live six-panel dashboard.
 
 ## Repo map
 

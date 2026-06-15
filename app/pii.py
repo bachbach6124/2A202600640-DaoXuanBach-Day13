@@ -2,21 +2,35 @@ from __future__ import annotations
 
 import hashlib
 import re
+from typing import Any
 
 PII_PATTERNS: dict[str, str] = {
-    "email": r"[\w\.-]+@[\w\.-]+\.\w+",
-    "phone_vn": r"(?:\+84|0)[ \.-]?\d{3}[ \.-]?\d{3}[ \.-]?\d{3,4}", # Matches 090 123 4567, 090.123.4567, etc.
+    "email": r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b",
+    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9,10}(?!\d)",
     "cccd": r"\b\d{12}\b",
     "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
-    # TODO: Add more patterns (e.g., Passport, Vietnamese address keywords)
+    "passport": r"\b[A-Z]\d{7,8}\b",
 }
 
 
 def scrub_text(text: str) -> str:
     safe = text
     for name, pattern in PII_PATTERNS.items():
-        safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe)
+        flags = 0 if name == "passport" else re.IGNORECASE
+        safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe, flags=flags)
     return safe
+
+
+def scrub_value(value: Any) -> Any:
+    if isinstance(value, str):
+        return scrub_text(value)
+    if isinstance(value, dict):
+        return {key: scrub_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [scrub_value(item) for item in value]
+    if isinstance(value, tuple):
+        return tuple(scrub_value(item) for item in value)
+    return value
 
 
 def summarize_text(text: str, max_len: int = 80) -> str:
