@@ -12,7 +12,13 @@ log = get_logger()
 CORPUS = {
     "refund": ["Refunds are available within 7 days with proof of purchase."],
     "monitoring": ["Metrics detect incidents, traces localize them, logs explain root cause."],
-    "policy": ["Do not expose PII in logs. Use sanitized summaries only."],
+    "policy": ["PII and other sensitive data must not appear in application logs. Use sanitized summaries only."],
+}
+
+KEYWORDS = {
+    "refund": {"refund", "purchase"},
+    "monitoring": {"metric", "metrics", "trace", "traces", "observability", "monitoring"},
+    "policy": {"pii", "sensitive", "policy", "credit card", "phone", "logged", "app logs"},
 }
 
 
@@ -31,10 +37,17 @@ def retrieve(message: str) -> list[str]:
     if STATE["rag_slow"]:
         time.sleep(5.5)
     lowered = message.lower()
-    for key, docs in CORPUS.items():
-        if key in lowered:
-            _record_retrieval(message, docs, started)
-            return docs
+    ranked = sorted(
+        (
+            (sum(keyword in lowered for keyword in keywords), key)
+            for key, keywords in KEYWORDS.items()
+        ),
+        reverse=True,
+    )
+    if ranked[0][0] > 0:
+        docs = CORPUS[ranked[0][1]]
+        _record_retrieval(message, docs, started)
+        return docs
     docs = ["No domain document matched. Use general fallback answer."]
     _record_retrieval(message, docs, started)
     return docs

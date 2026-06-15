@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import time
 from dataclasses import dataclass
 
@@ -121,14 +122,18 @@ class LabAgent:
         return round(input_cost + output_cost, 6)
 
     def _heuristic_quality(self, question: str, answer: str, docs: list[str]) -> float:
-        score = 0.5
-        if docs:
-            score += 0.2
-        if len(answer) > 40:
-            score += 0.1
-        tokens = question.lower().split()[:3]
-        if tokens and any(token in answer.lower() for token in tokens):
-            score += 0.1
+        if not docs or "No domain document matched" in docs[0]:
+            return 0.35
+        meaningful = {
+            token
+            for token in re.findall(r"[a-z0-9]+", " ".join(docs).lower())
+            if len(token) >= 4
+        }
+        answer_tokens = set(re.findall(r"[a-z0-9]+", answer.lower()))
+        grounding = len(meaningful & answer_tokens) / max(1, len(meaningful))
+        score = 0.55 + (0.4 * grounding)
+        if len(answer) <= 180:
+            score += 0.05
         if "[REDACTED" in answer:
             score -= 0.2
         return round(max(0.0, min(1.0, score)), 2)

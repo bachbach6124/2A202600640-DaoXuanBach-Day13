@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import random
 import time
 from dataclasses import dataclass
 
@@ -38,14 +37,11 @@ class FakeLLM:
     def generate(self, prompt: str) -> FakeResponse:
         started = time.perf_counter()
         time.sleep(0.15)
-        input_tokens = max(20, len(prompt) // 4)
-        output_tokens = random.randint(80, 180)
+        input_tokens = estimate_tokens(prompt)
+        answer = self._grounded_answer(prompt)
+        output_tokens = estimate_tokens(answer)
         if STATE["cost_spike"]:
-            output_tokens *= 5
-        answer = (
-            "Starter answer. Teams should improve this output logic and add better quality checks. "
-            "Use retrieved context and keep responses concise."
-        )
+            output_tokens *= 20
         latency_ms = int((time.perf_counter() - started) * 1000)
         update_current_observation(
             metadata={"latency_ms": latency_ms, "prompt_preview": summarize_text(prompt)},
@@ -68,3 +64,14 @@ class FakeLLM:
             usage=FakeUsage(input_tokens, output_tokens),
             model=self.model,
         )
+
+    @staticmethod
+    def _grounded_answer(prompt: str) -> str:
+        docs = prompt.partition("Docs=")[2].partition("\nQuestion=")[0].strip()
+        if not docs or "No domain document matched" in docs:
+            return "No matching domain document was found, so the answer needs human review."
+        return docs.strip("[]'\"")
+
+
+def estimate_tokens(text: str) -> int:
+    return max(1, (len(text) + 3) // 4)

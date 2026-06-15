@@ -1,0 +1,86 @@
+{
+  "methodology": "Baseline uses the previous random output midpoint of 130 tokens/request; optimized uses deterministic concise grounded answers.",
+  "requests": 10,
+  "before": {
+    "output_tokens": 1300,
+    "cost_usd": 0.020679
+  },
+  "after": {
+    "output_tokens": 207,
+    "cost_usd": 0.004284
+  },
+  "token_reduction_pct": 84.08,
+  "cost_reduction_pct": 79.28,
+  "cases": [
+    {
+      "question": "What is your refund policy? My email is [REDACTED_EMAIL]",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 15,
+      "baseline_cost_usd": 0.002064,
+      "optimized_cost_usd": 0.000339
+    },
+    {
+      "question": "Explain why metrics traces and logs work together",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 18,
+      "baseline_cost_usd": 0.002064,
+      "optimized_cost_usd": 0.000384
+    },
+    {
+      "question": "Summarize the monitoring policy for production logging",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 24,
+      "baseline_cost_usd": 0.002088,
+      "optimized_cost_usd": 0.000498
+    },
+    {
+      "question": "Can I get help with policy and monitoring?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 24,
+      "baseline_cost_usd": 0.002076,
+      "optimized_cost_usd": 0.000486
+    },
+    {
+      "question": "Here is my phone [REDACTED_PHONE_VN], what should be logged?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 24,
+      "baseline_cost_usd": 0.002082,
+      "optimized_cost_usd": 0.000492
+    },
+    {
+      "question": "Give me a short summary of the observability workflow",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 18,
+      "baseline_cost_usd": 0.00207,
+      "optimized_cost_usd": 0.00039
+    },
+    {
+      "question": "What should not appear in app logs?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 24,
+      "baseline_cost_usd": 0.00207,
+      "optimized_cost_usd": 0.00048
+    },
+    {
+      "question": "How do I debug tail latency?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 18,
+      "baseline_cost_usd": 0.002037,
+      "optimized_cost_usd": 0.000357
+    },
+    {
+      "question": "What is the policy for PII and credit card [REDACTED_CREDIT_CARD]?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 24,
+      "baseline_cost_usd": 0.002091,
+      "optimized_cost_usd": 0.000501
+    },
+    {
+      "question": "How should alerts be designed?",
+      "baseline_output_tokens": 130,
+      "optimized_output_tokens": 18,
+      "baseline_cost_usd": 0.002037,
+      "optimized_cost_usd": 0.000357
+    }
+  ]
+}

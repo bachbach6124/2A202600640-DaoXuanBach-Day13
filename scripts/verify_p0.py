@@ -71,6 +71,8 @@ def main() -> None:
     for key in ("high_latency_alert", "high_error_alert", "cost_alert"):
         alert = report[key]
         print(f"{alert['name']}: firing={alert['firing']} current={alert['current_value']}")
+        if not alert["firing"]:
+            raise SystemExit(f"Verification failed: {alert['name']} did not fire")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,52 @@
+{
+  "total": 3,
+  "passed": 3,
+  "pass_rate_pct": 100.0,
+  "quality_avg": 1.0,
+  "cases": [
+    {
+      "question": "What is your refund policy?",
+      "answer": "Refunds are available within 7 days with proof of purchase.",
+      "must_include": [
+        "7 days",
+        "proof of purchase"
+      ],
+      "found": [
+        "7 days",
+        "proof of purchase"
+      ],
+      "passed": true,
+      "quality_score": 1.0
+    },
+    {
+      "question": "Explain why metrics traces and logs work together",
+      "answer": "Metrics detect incidents, traces localize them, logs explain root cause.",
+      "must_include": [
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "found": [
+        "metrics",
+        "traces",
+        "logs"
+      ],
+      "passed": true,
+      "quality_score": 1.0
+    },
+    {
+      "question": "What should not appear in app logs?",
+      "answer": "PII and other sensitive data must not appear in application logs. Use sanitized summaries only.",
+      "must_include": [
+        "PII",
+        "sensitive"
+      ],
+      "found": [
+        "PII",
+        "sensitive"
+      ],
+      "passed": true,
+      "quality_score": 1.0
+    }
+  ]
+}

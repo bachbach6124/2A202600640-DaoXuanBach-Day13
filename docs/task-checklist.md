@@ -4,7 +4,7 @@
 
 | Muc | Hien trang |
 |---|---|
-| Unit tests | `11 passed`, gom unit va API integration tests |
+| Unit tests | `17 passed`, gom unit, API integration, concurrency, quality va audit tests |
 | Log validator | `100/100` tren 103 log records |
 | Correlation ID | Da propagate qua response, logs va request context |
 | Log enrichment | Da co `user_id_hash`, `session_id`, `feature`, `model`, `env` |
@@ -14,6 +14,9 @@
 | Alerts | Ca 3 rule da duoc script trigger thanh cong |
 | Blueprint report | Da dien day du local evidence va Langfuse trace evidence |
 | Git evidence | Cac commit P0 va Langfuse evidence da push len `origin/main` |
+| Quality evaluation | `3/3` expected answers pass, quality trung binh `1.0` |
+| Cost optimization | Giam output token `84.08%`, chi phi mo phong `79.28%` tren 10 request |
+| Audit logs | `34` records, JSON Schema errors `0`, PII leaks `0` |
 
 ## P0 - Bat buoc de dat
 
@@ -44,22 +47,22 @@
 
 | Done | Task | File lien quan | Tieu chi hoan thanh / bang chung |
 |:---:|---|---|---|
-| [ ] | Lam fake answer su dung retrieved docs | `app/mock_llm.py`, `app/agent.py`, `data/expected_answers.jsonl` | Cac answer dap ung `must_include`; quality score phan anh chat luong thuc thay vi chi do do dai |
-| [ ] | Bo sung quality evaluation script/test | `data/expected_answers.jsonl`, `tests/` hoac `scripts/` | Bao cao pass rate/quality score co the lap lai |
-| [ ] | Ghi metric cho request that bai | `app/metrics.py`, `app/main.py` | Traffic va error-rate denominator dung ke ca khi agent loi |
-| [ ] | Them structured log cho RAG/LLM/tool | `app/agent.py`, `app/mock_rag.py`, `app/mock_llm.py` | Log co `tool_name`, model, latency tung buoc va cung correlation ID |
-| [ ] | Nang cap log validator theo JSON Schema | `scripts/validate_logs.py`, `config/logging_schema.json` | Validator kiem tra type/required fields bang schema, scan nhieu pattern PII va tra exit code fail ro rang |
-| [ ] | Them integration/concurrency tests | `tests/` | Test `/chat`, `/metrics`, incident enable/disable, error path va nhieu request dong thoi |
-| [ ] | Chuan bi script demo lap lai duoc | `scripts/` | Mot lenh tao baseline, inject incident, tao traffic va in metrics truoc/sau |
+| [x] | Lam fake answer su dung retrieved docs | `app/mock_llm.py`, `app/agent.py`, `data/expected_answers.jsonl` | `3/3` answer dap ung `must_include`; quality grounded trung binh `1.0` |
+| [x] | Bo sung quality evaluation script/test | `scripts/evaluate_quality.py`, `tests/test_quality.py` | Bao cao lap lai tai `docs/evidence/quality-evaluation.json` |
+| [x] | Ghi metric cho request that bai | `app/metrics.py`, `app/main.py`, `tests/test_api.py` | Error incident tao traffic `1`, error `1`, error rate `100%` |
+| [x] | Them structured log cho RAG/LLM/tool | `app/agent.py`, `app/mock_rag.py`, `app/mock_llm.py` | Co `tool_name`, model, latency, token va cung correlation ID |
+| [x] | Nang cap log validator theo JSON Schema | `scripts/validate_logs.py`, `config/logging_schema.json` | `103` records, schema error `0`, PII leak `0`, score `100/100` |
+| [x] | Them integration/concurrency tests | `tests/` | `17 passed`; co chat, metrics, incident, error path, audit va 10 request dong thoi |
+| [x] | Chuan bi script demo lap lai duoc | `scripts/verify_all.py` | Mot lenh khoi dong app, quality/cost benchmark, inject 3 incident va validate logs/audit |
 
 ## P2 - Bonus
 
 | Done | Task | Diem | Tieu chi hoan thanh / bang chung |
 |:---:|---|---:|---|
-| [ ] | Toi uu chi phi | +3 | Co baseline va so lieu sau toi uu ve token/cost, kem screenshot/bang so sanh |
-| [ ] | Lam dashboard chuyen nghiep | +3 | Bo cuc ro, ten panel/legend/don vi nhat quan, threshold de nhin, khong qua 6-8 panel |
-| [ ] | Auto-instrumentation hoac custom automation | +2 | Co script/instrumentation chay duoc va bang chung trace/metric sinh tu dong |
-| [ ] | Tach audit logs | +2 | Ghi `data/audit.jsonl`, schema ro, co actor/action/result/correlation ID, van redact PII |
+| [x] | Toi uu chi phi | +3 | 10 request: output token `1300 -> 207` (-84.08%), cost `$0.020679 -> $0.004284` (-79.28%) |
+| [x] | Lam dashboard chuyen nghiep | +3 | Dashboard 6 panel, threshold/SLO, don vi va refresh 15s; evidence `output/playwright/dashboard-6-panels.png` |
+| [x] | Auto-instrumentation hoac custom automation | +2 | `scripts/verify_all.py` chay end-to-end va fail neu bat ky alert/validator nao khong dat |
+| [x] | Tach audit logs | +2 | `data/audit.jsonl`, `config/audit_schema.json`; 34 records, schema/PII errors bang 0 |
 
 ## Thu tu thuc hien de xuat
 

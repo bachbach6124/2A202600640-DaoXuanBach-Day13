@@ -58,7 +58,7 @@
 ## 5. Individual Contributions & Evidence
 
 ### [MEMBER_A_NAME] Dao Xuan Bach
-- [TASKS_COMPLETED]: Correlation middleware, structured logging, recursive PII redaction, Langfuse compatibility, RAG/LLM spans, time-series metrics, six-panel dashboard, SLOs, alerts, incident automation, tests, validator, and evidence.
+- [TASKS_COMPLETED]: Correlation middleware, structured logging, recursive PII redaction, Langfuse compatibility, RAG/LLM spans, grounded answer quality evaluation, cost optimization benchmark, time-series metrics, six-panel dashboard, SLOs, alerts, separate audit logs, end-to-end automation, tests, validators, and evidence.
 - [EVIDENCE_LINK]: https://github.com/bachbach6124/2A202600640-DaoXuanBach-Day13/commit/3a367b3
 - [LANGFUSE_EVIDENCE_COMMIT]: https://github.com/bachbach6124/2A202600640-DaoXuanBach-Day13/commit/d54ffb5
 
@@ -81,6 +81,7 @@
 ---
 
 ## 6. Bonus Items (Optional)
-- [BONUS_COST_OPTIMIZATION]: Not claimed
-- [BONUS_AUDIT_LOGS]: Not claimed
-- [BONUS_CUSTOM_METRIC]: Automated incident and alert verification in `scripts/verify_p0.py`
+- [BONUS_COST_OPTIMIZATION]: Claimed - output tokens reduced from 1300 to 207 (84.08%) and simulated cost from $0.020679 to $0.004284 (79.28%) across 10 requests. Evidence: `docs/evidence/cost-optimization.json`.
+- [BONUS_DASHBOARD]: Claimed - professional six-panel dashboard with consistent units, SLO thresholds, legends, time range, and 15-second refresh. Evidence: `output/playwright/dashboard-6-panels.png`.
+- [BONUS_AUDIT_LOGS]: Claimed - separate `data/audit.jsonl` with actor/action/result/correlation ID, JSON Schema validation, and PII redaction. Verification: 34 records, 0 schema errors, 0 PII leaks.
+- [BONUS_CUSTOM_METRIC]: Claimed - `scripts/verify_all.py` starts the app and automatically verifies quality, cost, three incident alerts, application logs, and audit logs.

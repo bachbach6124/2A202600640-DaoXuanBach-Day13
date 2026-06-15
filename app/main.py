@@ -12,6 +12,7 @@ from structlog.contextvars import bind_contextvars
 
 from .agent import LabAgent
 from .alerts import evaluate_alerts
+from .audit import recent_audit, write_audit
 from .dashboard import DASHBOARD_HTML
 from .incidents import disable, enable, status
 from .logging_config import configure_logging, get_logger, log_path
@@ -86,10 +87,23 @@ async def recent_logs(
     return records[-limit:]
 
 
+@app.get("/audit/recent")
+async def audit_records(
+    limit: int = Query(default=20, ge=1, le=200),
+) -> list[dict]:
+    return recent_audit(limit)
+
+
 @app.post("/metrics/reset")
-async def reset_metric_state() -> dict:
+async def reset_metric_state(request: Request) -> dict:
     reset()
     log.warning("metrics_reset", service="control")
+    write_audit(
+        actor="system",
+        action="metrics.reset",
+        result="success",
+        correlation_id=request.state.correlation_id,
+    )
     return {"ok": True, "metrics": snapshot()}
 
 
@@ -133,6 +147,13 @@ async def chat(request: Request, body: ChatRequest) -> ChatResponse:
                 "trace_id": result.trace_id,
             },
         )
+        write_audit(
+            actor=user_id_hash,
+            action="chat.complete",
+            result="success",
+            correlation_id=request.state.correlation_id,
+            details={"feature": body.feature, "model": agent.model},
+        )
         return ChatResponse(
             answer=result.answer,
             correlation_id=request.state.correlation_id,
@@ -154,24 +175,45 @@ async def chat(request: Request, body: ChatRequest) -> ChatResponse:
             latency_ms=latency_ms,
             payload={"detail": str(exc), "message_preview": summarize_text(body.message)},
         )
+        write_audit(
+            actor=user_id_hash,
+            action="chat.complete",
+            result="failure",
+            correlation_id=request.state.correlation_id,
+            details={"feature": body.feature, "error_type": error_type},
+        )
         raise HTTPException(status_code=500, detail=error_type) from exc
 
 
 @app.post("/incidents/{name}/enable")
-async def enable_incident(name: str) -> JSONResponse:
+async def enable_incident(name: str, request: Request) -> JSONResponse:
     try:
         enable(name)
         log.warning("incident_enabled", service="control", payload={"name": name})
+        write_audit(
+            actor="system",
+            action="incident.enable",
+            result="success",
+            correlation_id=request.state.correlation_id,
+            details={"name": name},
+        )
         return JSONResponse({"ok": True, "incidents": status()})
     except KeyError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @app.post("/incidents/{name}/disable")
-async def disable_incident(name: str) -> JSONResponse:
+async def disable_incident(name: str, request: Request) -> JSONResponse:
     try:
         disable(name)
         log.warning("incident_disabled", service="control", payload={"name": name})
+        write_audit(
+            actor="system",
+            action="incident.disable",
+            result="success",
+            correlation_id=request.state.correlation_id,
+            details={"name": name},
+        )
         return JSONResponse({"ok": True, "incidents": status()})
     except KeyError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc

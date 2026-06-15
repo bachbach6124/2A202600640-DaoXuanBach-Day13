@@ -50,6 +50,16 @@ python scripts/validate_logs.py
 # Verify baseline traffic and all three incident alerts
 python scripts/verify_p0.py
 
+# Run the complete P0/P1/P2 demo from a clean state
+python scripts/verify_all.py
+
+# Reproduce quality and cost optimization reports
+python scripts/evaluate_quality.py
+python scripts/benchmark_cost.py
+
+# Validate the separate audit trail
+python scripts/validate_audit.py
+
 # Export a sanitized Langfuse trace list and sample waterfall
 python scripts/export_langfuse_evidence.py
 ```
@@ -75,10 +85,15 @@ config/
   slo.yaml               starter SLOs
   alert_rules.yaml       starter alerts
   logging_schema.json    expected log schema
+  audit_schema.json      separate audit-log schema
 scripts/
   load_test.py           generate requests
   inject_incident.py     flip incident toggles
   validate_logs.py       schema checks for logs
+  validate_audit.py      schema and PII checks for audit logs
+  evaluate_quality.py    expected-answer quality report
+  benchmark_cost.py      before/after token and cost report
+  verify_all.py          one-command P0/P1/P2 verification
 data/
   sample_queries.jsonl   requests for testing
   expected_answers.jsonl starter quality checks
