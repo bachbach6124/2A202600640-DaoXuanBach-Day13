@@ -1,0 +1,279 @@
+{
+  "source": "https://jp.cloud.langfuse.com/api/public",
+  "projectId": "cmqex2vmr0061ad0efsqaj54m",
+  "traceCount": 10,
+  "projectTraceCount": 19,
+  "traces": [
+    {
+      "id": "a69d128e809c57de71beb09ba3c1dd56",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.983Z",
+      "sessionId": "s07",
+      "userId": "1632c29ecdec",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/a69d128e809c57de71beb09ba3c1dd56"
+    },
+    {
+      "id": "9bb9c2001a34e045d0624dcd4896ad94",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.822Z",
+      "sessionId": "s09",
+      "userId": "4d14d5d4f719",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/9bb9c2001a34e045d0624dcd4896ad94"
+    },
+    {
+      "id": "758288e41e7cfcd4587708822be31f95",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.655Z",
+      "sessionId": "s10",
+      "userId": "105a9cef3903",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/758288e41e7cfcd4587708822be31f95"
+    },
+    {
+      "id": "e6027331676c74437dbca80480c351c2",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.494Z",
+      "sessionId": "s08",
+      "userId": "2f015d970c0b",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/e6027331676c74437dbca80480c351c2"
+    },
+    {
+      "id": "463a82161e7f15a25c902cf1e2e6cd98",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.336Z",
+      "sessionId": "s06",
+      "userId": "4c4f62330d76",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "summary"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/463a82161e7f15a25c902cf1e2e6cd98"
+    },
+    {
+      "id": "efa6d0d44ab346a08a12e6b5f7eb08a5",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.167Z",
+      "sessionId": "s03",
+      "userId": "97ce842ec69d",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "summary"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/efa6d0d44ab346a08a12e6b5f7eb08a5"
+    },
+    {
+      "id": "9bba782544ffc8fe44e7d38d88c3e4bc",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:27.008Z",
+      "sessionId": "s05",
+      "userId": "64f6ec689229",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/9bba782544ffc8fe44e7d38d88c3e4bc"
+    },
+    {
+      "id": "db6857a91246744704e346b58c2c77e6",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:26.844Z",
+      "sessionId": "s04",
+      "userId": "75af07890985",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/db6857a91246744704e346b58c2c77e6"
+    },
+    {
+      "id": "607d0bdb04bcffc60a50b500308b74f1",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:26.684Z",
+      "sessionId": "s02",
+      "userId": "95b6504a8bd6",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/607d0bdb04bcffc60a50b500308b74f1"
+    },
+    {
+      "id": "b1e1ee6f60c289a359932fcd6143ab75",
+      "name": "chat-request",
+      "timestamp": "2026-06-15T08:00:26.527Z",
+      "sessionId": "s01",
+      "userId": "2055254ee30a",
+      "tags": [
+        "claude-sonnet-4-5",
+        "lab",
+        "qa"
+      ],
+      "htmlPath": "/project/cmqex2vmr0061ad0efsqaj54m/traces/b1e1ee6f60c289a359932fcd6143ab75"
+    }
+  ],
+  "sampleTrace": {
+    "id": "a69d128e809c57de71beb09ba3c1dd56",
+    "name": "chat-request",
+    "timestamp": "2026-06-15T08:00:27.983Z",
+    "sessionId": "s07",
+    "userId": "1632c29ecdec",
+    "tags": [
+      "claude-sonnet-4-5",
+      "lab",
+      "qa"
+    ],
+    "metadata": {
+      "feature": "qa",
+      "model": "claude-sonnet-4-5",
+      "correlation_id": "req-5d43c242",
+      "doc_count": 1,
+      "latency_ms": 156,
+      "query_preview": "What should not appear in app logs?",
+      "quality_score": 0.9,
+      "cost_usd": 0.00267,
+      "resourceAttributes": {
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.name": "opentelemetry",
+        "telemetry.sdk.version": "1.42.1",
+        "service.name": "unknown_service"
+      },
+      "scope": {
+        "name": "langfuse-sdk",
+        "version": "3.2.1",
+        "attributes": {
+          "public_key": "[REDACTED_LANGFUSE_KEY]"
+        }
+      }
+    },
+    "htmlUrl": "https://jp.cloud.langfuse.com/project/cmqex2vmr0061ad0efsqaj54m/traces/a69d128e809c57de71beb09ba3c1dd56",
+    "observations": [
+      {
+        "id": "c8d42f07bf55818c",
+        "name": "llm-generation",
+        "type": "GENERATION",
+        "parentObservationId": "4aac4b2e71b1753e",
+        "startTime": "2026-06-15T08:00:27.983Z",
+        "endTime": "2026-06-15T08:00:28.139Z",
+        "model": "claude-sonnet-4-5",
+        "usage": {
+          "unit": "TOKENS",
+          "input": 30,
+          "output": 172,
+          "total": 202
+        },
+        "metadata": {
+          "latency_ms": 155,
+          "prompt_preview": "Feature=qa Docs=['No domain document matched. Use general fallback answer.'] Que...",
+          "resourceAttributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.42.1",
+            "service.name": "unknown_service"
+          },
+          "scope": {
+            "name": "langfuse-sdk",
+            "version": "3.2.1",
+            "attributes": {
+              "public_key": "[REDACTED_LANGFUSE_KEY]"
+            }
+          }
+        }
+      },
+      {
+        "id": "4aac4b2e71b1753e",
+        "name": "agent-run",
+        "type": "SPAN",
+        "parentObservationId": null,
+        "startTime": "2026-06-15T08:00:27.983Z",
+        "endTime": "2026-06-15T08:00:28.139Z",
+        "model": null,
+        "usage": {
+          "unit": "TOKENS",
+          "input": 0,
+          "output": 0,
+          "total": 0
+        },
+        "metadata": {
+          "feature": "qa",
+          "model": "claude-sonnet-4-5",
+          "correlation_id": "req-5d43c242",
+          "doc_count": 1,
+          "latency_ms": 156,
+          "query_preview": "What should not appear in app logs?",
+          "quality_score": 0.9,
+          "cost_usd": 0.00267,
+          "resourceAttributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.42.1",
+            "service.name": "unknown_service"
+          },
+          "scope": {
+            "name": "langfuse-sdk",
+            "version": "3.2.1",
+            "attributes": {
+              "public_key": "[REDACTED_LANGFUSE_KEY]"
+            }
+          }
+        }
+      },
+      {
+        "id": "ce6321a0a1b49177",
+        "name": "rag-retrieval",
+        "type": "SPAN",
+        "parentObservationId": "4aac4b2e71b1753e",
+        "startTime": "2026-06-15T08:00:27.983Z",
+        "endTime": "2026-06-15T08:00:27.983Z",
+        "model": null,
+        "usage": {
+          "unit": "TOKENS",
+          "input": 0,
+          "output": 0,
+          "total": 0
+        },
+        "metadata": {
+          "doc_count": 1,
+          "latency_ms": 0,
+          "query_preview": "What should not appear in app logs?",
+          "resourceAttributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.42.1",
+            "service.name": "unknown_service"
+          },
+          "scope": {
+            "name": "langfuse-sdk",
+            "version": "3.2.1",
+            "attributes": {
+              "public_key": "[REDACTED_LANGFUSE_KEY]"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

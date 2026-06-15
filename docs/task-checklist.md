@@ -9,17 +9,17 @@
 | Correlation ID | Da propagate qua response, logs va request context |
 | Log enrichment | Da co `user_id_hash`, `session_id`, `feature`, `model`, `env` |
 | PII processor | Da scrub de quy email, phone, CCCD, card va passport |
-| Langfuse | SDK/API da san sang; con thieu key de tao 10 traces live |
+| Langfuse | Da xac thuc Japan region va tao 10 lab traces live |
 | Dashboard | Da co dashboard 6 panels va screenshot |
 | Alerts | Ca 3 rule da duoc script trigger thanh cong |
-| Blueprint report | Da dien bang so lieu local; trace evidence dang cho key |
+| Blueprint report | Da dien day du local evidence va Langfuse trace evidence |
 | Git evidence | Commit `3a367b3` da co; can push len remote truoc khi nop |
 
 ## P0 - Bat buoc de dat
 
 | Done | Task | File lien quan | Tieu chi hoan thanh / bang chung |
 |:---:|---|---|---|
-| [ ] | Cai moi truong va tao `.env` | `.env.example`, `requirements.txt` | App va `/health` da OK; con thieu Langfuse public/secret key |
+| [x] | Cai moi truong va tao `.env` | `.env.example`, `requirements.txt` | App va `/health` OK; Langfuse Japan `auth_check=True` |
 | [x] | Hoan thien correlation ID middleware | `app/middleware.py` | Clear context moi request; dung `x-request-id` neu co hoac tao `req-<8 hex>`; bind vao structlog; response co `x-request-id` va `x-response-time-ms` |
 | [x] | Bind request context vao moi API log | `app/main.py` | Log `service=api` co du `correlation_id`, `user_id_hash`, `session_id`, `feature`, `model`, `env`; khong log raw user ID |
 | [x] | Bat PII scrubber trong logging pipeline | `app/logging_config.py` | Dang ky `scrub_event` truoc khi ghi file va render console |
@@ -29,16 +29,16 @@
 | [x] | Dat `VALIDATE_LOGS_SCORE >= 80/100` | `scripts/validate_logs.py`, `data/logs.jsonl` | Dat `100/100`, 34 correlation ID, PII leaks = 0 |
 | [x] | Xac minh Langfuse SDK tuong thich voi version pin | `requirements.txt`, `app/tracing.py` | Adapter nhan dien API v4 va ho tro legacy; `/health` bao ro SDK/config status |
 | [x] | Tao trace va cac span co y nghia | `app/agent.py`, `app/mock_rag.py`, `app/mock_llm.py` | Da implement `agent-run -> rag-retrieval -> llm-generation`, khong capture raw PII input |
-| [ ] | Gui va xac minh it nhat 10 traces live | Langfuse, `scripts/load_test.py` | Screenshot danh sach `>= 10` traces va mot trace waterfall day du |
+| [x] | Gui va xac minh it nhat 10 traces live | Langfuse, `scripts/load_test.py` | 10 lab traces; co API export, screenshot va trace URL chinh thuc |
 | [x] | Hoan thien metrics phuc vu 6 panels | `app/metrics.py`, `app/main.py` | Co latency P50/P95/P99, traffic/RPM, error rate, cost, tokens, quality va time series |
 | [x] | Dung dashboard 6 panels | `docs/dashboard-spec.md` | Time range 1h, refresh 15s, co don vi/SLO line va screenshot |
 | [x] | Chot SLO theo so lieu thuc te | `config/slo.yaml`, `docs/blueprint-template.md` | Baseline P95 158ms, error 0%, demo cost $0.019485, quality 0.88 |
 | [x] | Kiem thu 3 alert rules | `config/alert_rules.yaml`, `docs/alerts.md` | Script da trigger latency, error va cost alert; ket qua tai `docs/evidence/p0-verification.json` |
 | [x] | Inject incident va debug theo flow | `scripts/inject_incident.py`, `data/incidents.json` | `rag_slow` duoc chung minh boi metric 5659ms va RAG log 5504ms |
 | [x] | Dien day du blueprint report | `docs/blueprint-template.md` | Da dien metadata, score, SLO, incident va evidence; Langfuse evidence ghi pending |
-| [ ] | Thu thap toan bo grading evidence | `docs/grading-evidence.md` | Da co log/dashboard/alert; con thieu 2 screenshot Langfuse |
+| [x] | Thu thap toan bo grading evidence | `docs/grading-evidence.md` | Da co log, dashboard, alerts, trace list va waterfall |
 | [x] | Tao Git evidence cho tung thanh vien | Git history, `docs/blueprint-template.md` | Thanh vien duy nhat co commit `3a367b3`; can push de remote link truy cap duoc |
-| [ ] | Rehearse live demo | README, report, dashboard, Langfuse | Local demo da chay on dinh; can lap lai voi Langfuse da cau hinh |
+| [x] | Rehearse live demo | README, report, dashboard, Langfuse | Da chay 10 request voi tracing live, dashboard va incident flow |
 
 ## P1 - Nen lam de tang chat luong
 

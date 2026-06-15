@@ -49,6 +49,9 @@ python scripts/validate_logs.py
 
 # Verify baseline traffic and all three incident alerts
 python scripts/verify_p0.py
+
+# Export a sanitized Langfuse trace list and sample waterfall
+python scripts/export_langfuse_evidence.py
 ```
 
 Open `http://127.0.0.1:8000/dashboard` for the live six-panel dashboard.

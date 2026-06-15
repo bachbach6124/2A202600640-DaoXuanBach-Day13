@@ -42,7 +42,11 @@ try:
         if _client is None:
             yield
             return
-        with _client.propagate_attributes(
+        propagate = getattr(_client, "propagate_attributes", None)
+        if propagate is None:
+            yield
+            return
+        with propagate(
             user_id=user_id,
             session_id=session_id,
             tags=tags,
@@ -160,7 +164,26 @@ except (ImportError, AttributeError):
             return None
 
 
-if SDK_API != "legacy":
+if SDK_API == "v4":
+    def update_current_trace(
+        *,
+        user_id: str,
+        session_id: str,
+        tags: list[str],
+        metadata: dict[str, Any],
+    ) -> None:
+        if _client is None:
+            return
+        update = getattr(_client, "update_current_trace", None)
+        if update is not None:
+            update(
+                name="chat-request",
+                user_id=user_id,
+                session_id=session_id,
+                tags=tags,
+                metadata=metadata,
+            )
+elif SDK_API != "legacy":
     def update_current_trace(
         *,
         user_id: str,

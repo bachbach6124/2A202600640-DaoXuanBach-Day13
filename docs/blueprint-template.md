@@ -16,7 +16,7 @@
 
 ## 2. Group Performance (Auto-Verified)
 - [VALIDATE_LOGS_FINAL_SCORE]: 100/100
-- [TOTAL_TRACES_COUNT]: 0 live traces; Langfuse credentials pending in `.env`
+- [TOTAL_TRACES_COUNT]: 10 lab traces verified via Langfuse Public API
 - [PII_LEAKS_FOUND]: 0 across 103 validated log records
 
 ---
@@ -26,8 +26,9 @@
 ### 3.1 Logging & Tracing
 - [EVIDENCE_CORRELATION_ID_SCREENSHOT]: output/playwright/logs-correlation-pii.png
 - [EVIDENCE_PII_REDACTION_SCREENSHOT]: output/playwright/logs-correlation-pii.png
-- [EVIDENCE_TRACE_WATERFALL_SCREENSHOT]: Pending Langfuse credentials
-- [TRACE_WATERFALL_EXPLANATION]: The implemented trace hierarchy is `agent-run -> rag-retrieval -> llm-generation`. Under `rag_slow`, the retrieval span should show about 5.5 seconds while the LLM generation remains near 150ms.
+- [EVIDENCE_TRACE_WATERFALL_SCREENSHOT]: output/playwright/langfuse-traces-waterfall.png
+- [TRACE_WATERFALL_EXPLANATION]: Trace `a69d128e809c57de71beb09ba3c1dd56` contains root span `agent-run` with child observations `rag-retrieval` and `llm-generation`. The generation records model and token usage while trace-level metadata includes hashed user, session, feature, model, and correlation ID.
+- [LANGFUSE_TRACE_URL]: https://jp.cloud.langfuse.com/project/cmqex2vmr0061ad0efsqaj54m/traces/a69d128e809c57de71beb09ba3c1dd56
 
 ### 3.2 Dashboard & SLOs
 - [DASHBOARD_6_PANELS_SCREENSHOT]: output/playwright/dashboard-6-panels.png

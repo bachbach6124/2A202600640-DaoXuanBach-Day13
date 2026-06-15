@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Langfuse Trace Evidence</title>
+  <style>
+    :root { --paper:#f4f1e9; --ink:#171814; --muted:#6c6e67; --line:#cfcbc0; --accent:#d45b26; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:36px 48px 56px; background:var(--paper); color:var(--ink); font-family:Inter,system-ui,sans-serif; }
+    header { display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:22px; border-bottom:1px solid var(--ink); }
+    .eyebrow, th, .observation span { font-size:11px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+    h1 { margin:5px 0 0; font-size:48px; letter-spacing:-.05em; }
+    .count { min-width:220px; text-align:right; font-size:56px; font-weight:800; line-height:.9; letter-spacing:-.06em; }
+    .count small { display:block; margin-top:8px; font-size:12px; line-height:1.2; letter-spacing:0; color:var(--muted); }
+    section { padding-top:28px; }
+    h2 { margin:0 0 14px; font-size:22px; letter-spacing:-.03em; }
+    table { width:100%; border-collapse:collapse; background:rgba(255,255,255,.35); }
+    th, td { padding:11px 13px; text-align:left; border-bottom:1px solid var(--line); font-size:13px; }
+    code { font-family:"SFMono-Regular",Consolas,monospace; font-size:12px; }
+    .waterfall { display:grid; gap:9px; padding-left:0; max-width:850px; }
+    .observation { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:15px 18px; border-left:6px solid var(--ink); background:rgba(255,255,255,.5); }
+    .observation:not(:first-child) { margin-left:54px; border-left-color:var(--accent); }
+    .observation strong { display:block; margin-top:3px; font-size:17px; }
+    .observation small { color:var(--muted); }
+    footer { margin-top:28px; padding-top:15px; border-top:1px solid var(--ink); color:var(--muted); font-size:12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div><div class="eyebrow">Verified via Langfuse Public API</div><h1>Trace evidence</h1></div>
+    <div class="count">10 <small>lab traces / 19 project total</small></div>
+  </header>
+  <section>
+    <h2>Trace list</h2>
+    <table>
+      <thead><tr><th>Trace ID</th><th>Name</th><th>Session</th><th>User hash</th><th>Timestamp UTC</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>a69d128e809c</code></td>
+          <td>chat-request</td>
+          <td>s07</td>
+          <td><code>1632c29ecdec</code></td>
+          <td>2026-06-15T08:00:27.983Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>9bb9c2001a34</code></td>
+          <td>chat-request</td>
+          <td>s09</td>
+          <td><code>4d14d5d4f719</code></td>
+          <td>2026-06-15T08:00:27.822Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>758288e41e7c</code></td>
+          <td>chat-request</td>
+          <td>s10</td>
+          <td><code>105a9cef3903</code></td>
+          <td>2026-06-15T08:00:27.655Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>e6027331676c</code></td>
+          <td>chat-request</td>
+          <td>s08</td>
+          <td><code>2f015d970c0b</code></td>
+          <td>2026-06-15T08:00:27.494Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>463a82161e7f</code></td>
+          <td>chat-request</td>
+          <td>s06</td>
+          <td><code>4c4f62330d76</code></td>
+          <td>2026-06-15T08:00:27.336Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>efa6d0d44ab3</code></td>
+          <td>chat-request</td>
+          <td>s03</td>
+          <td><code>97ce842ec69d</code></td>
+          <td>2026-06-15T08:00:27.167Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>9bba782544ff</code></td>
+          <td>chat-request</td>
+          <td>s05</td>
+          <td><code>64f6ec689229</code></td>
+          <td>2026-06-15T08:00:27.008Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>db6857a91246</code></td>
+          <td>chat-request</td>
+          <td>s04</td>
+          <td><code>75af07890985</code></td>
+          <td>2026-06-15T08:00:26.844Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>607d0bdb04bc</code></td>
+          <td>chat-request</td>
+          <td>s02</td>
+          <td><code>95b6504a8bd6</code></td>
+          <td>2026-06-15T08:00:26.684Z</td>
+        </tr>
+        
+        <tr>
+          <td><code>b1e1ee6f60c2</code></td>
+          <td>chat-request</td>
+          <td>s01</td>
+          <td><code>2055254ee30a</code></td>
+          <td>2026-06-15T08:00:26.527Z</td>
+        </tr>
+        </tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Sample waterfall / a69d128e809c</h2>
+    <div class="waterfall">
+        <div class="observation span">
+          <div><span>SPAN</span><strong>agent-run</strong></div>
+          <code>4aac4b2e71b1753e</code>
+          <small>parent: root</small>
+        </div>
+        
+        <div class="observation generation">
+          <div><span>GENERATION</span><strong>llm-generation</strong></div>
+          <code>c8d42f07bf55818c</code>
+          <small>parent: 4aac4b2e71b1753e</small>
+        </div>
+        
+        <div class="observation span">
+          <div><span>SPAN</span><strong>rag-retrieval</strong></div>
+          <code>ce6321a0a1b49177</code>
+          <small>parent: 4aac4b2e71b1753e</small>
+        </div>
+        </div>
+  </section>
+  <footer>Source: https://jp.cloud.langfuse.com/api/public · Project: cmqex2vmr0061ad0efsqaj54m</footer>
+</body>
+</html>
